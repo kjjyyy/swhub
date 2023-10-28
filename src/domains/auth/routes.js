@@ -1,11 +1,9 @@
 import express from "express";
+import { getJoin, postJoin } from "./controllers/authController";
 
 const authRouter = express.Router();
 
-authRouter
-  .route("/join")
-  .get((req, res, next) => res.render("join"))
-  .post((req, res, next) => res.send("join 성공"));
+authRouter.route("/join").get(getJoin).post(postJoin);
 authRouter
   .route("/login")
   .get((req, res, next) => res.send("login 페이지"))
