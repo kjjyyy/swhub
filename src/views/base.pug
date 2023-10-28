@@ -12,5 +12,7 @@ html(lang="ko")
                 li
                     a(href="/auth/join").header__btn 회원가입
         main
+            if errorMessage
+                span=errorMessage
             block content
-        footer &copy; #{new Date().getFullYear()} Swhub
+        include partials/footer
