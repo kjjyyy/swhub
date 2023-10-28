@@ -7,10 +7,23 @@ const userSchema = new mongoose.Schema({
   lastName: { type: String, required: true, default: "홍", trim: true },
   address: { type: String, required: true, default: "지구", trim: true },
   avatarUrl: { type: String, default: "" },
-  auth: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Auth",
-  },
+});
+
+userSchema.pre("validate", function (next) {
+  this.firstName = this.firstName.trim();
+  this.lastName = this.lastName.trim();
+  this.address = this.address.trim();
+
+  if (this.firstName === "") {
+    this.firstName = "길동";
+  }
+  if (this.lastName === "") {
+    this.lastName = "홍";
+  }
+  if (this.address === "") {
+    this.address = "지구";
+  }
+  next();
 });
 
 const User = mongoose.model("User", userSchema);
