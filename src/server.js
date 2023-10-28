@@ -1,9 +1,10 @@
 import express from "express";
+import mainRoutes from "./routes";
+import morgan from "morgan";
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use(morgan("dev"));
+app.use(mainRoutes);
 
 export default app;
