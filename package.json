@@ -4,5 +4,17 @@
   "description": "해당 프로젝트는 소프트웨어 공학 팀플 프로젝트를 진행하기 앞서 설명하는 예시 프로젝트입니다.",
   "main": "index.js",
   "author": "seunghyeokleeme",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.2",
+    "@babel/node": "^7.22.19",
+    "@babel/preset-env": "^7.23.2",
+    "nodemon": "^3.0.1"
+  }
 }
