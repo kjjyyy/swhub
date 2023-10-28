@@ -1,9 +1,14 @@
 import express from "express";
 import { getJoin, postJoin } from "./controllers/authController";
+import { validateDto } from "../../middlewares/validateDto";
+import registerAuthDto from "./dtos/registerDTO";
 
 const authRouter = express.Router();
 
-authRouter.route("/join").get(getJoin).post(postJoin);
+authRouter
+  .route("/join")
+  .get(getJoin)
+  .post(validateDto(registerAuthDto), postJoin);
 authRouter
   .route("/login")
   .get((req, res, next) => res.send("login 페이지"))
