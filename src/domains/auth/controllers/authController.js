@@ -1,4 +1,4 @@
-import registerAuthDto from "../dtos/registerDTO";
+import registerAuthDto from "../dtos/registerDto";
 import * as RegisterService from "../services/registerService";
 
 export const getJoin = (req, res) => {

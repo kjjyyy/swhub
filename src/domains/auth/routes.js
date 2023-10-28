@@ -1,7 +1,7 @@
 import express from "express";
 import { getJoin, postJoin } from "./controllers/authController";
 import { validateDto } from "../../middlewares/validateDto";
-import registerAuthDto from "./dtos/registerDTO";
+import registerAuthDto from "./dtos/registerDto";
 
 const authRouter = express.Router();
 
