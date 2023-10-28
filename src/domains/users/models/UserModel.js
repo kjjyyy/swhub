@@ -7,6 +7,10 @@ const userSchema = new mongoose.Schema({
   lastName: { type: String, required: true, default: "홍", trim: true },
   address: { type: String, required: true, default: "지구", trim: true },
   avatarUrl: { type: String, default: "" },
+  auth: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Auth",
+  },
 });
 
 const User = mongoose.model("User", userSchema);
