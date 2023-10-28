@@ -4,7 +4,7 @@ const authRouter = express.Router();
 
 authRouter
   .route("/join")
-  .get((req, res, next) => res.send("join 페이지"))
+  .get((req, res, next) => res.render("join"))
   .post((req, res, next) => res.send("join 성공"));
 authRouter
   .route("/login")

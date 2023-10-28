@@ -1,0 +1,16 @@
+doctype html 
+html(lang="ko")
+    head 
+        title base | Swhub
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")
+    body 
+        header
+            a(href="/").header__logo
+                i.fab.fa-github
+        nav 
+            ul 
+                li
+                    a(href="/auth/join").header__btn 회원가입
+        main
+            block content
+        footer &copy; #{new Date().getFullYear()} Swhub
