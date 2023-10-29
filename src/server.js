@@ -5,6 +5,7 @@ import { handleNotFound } from "./middlewares/errorHandlers/notFoundHandler";
 import { errorHandler } from "./middlewares/errorHandlers";
 import session from "express-session";
 import MongoStore from "connect-mongo";
+import methodOverride from "method-override";
 import { locals } from "./middlewares/locals";
 
 const app = express();
@@ -12,6 +13,7 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 
+app.use(methodOverride("_method"));
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(

@@ -1,7 +1,9 @@
 import loginDto from "../dtos/loginDto";
 import registerAuthDto from "../dtos/registerDto";
+import updatePasswordDto from "../dtos/update-passwordDto";
 import * as LoginService from "../services/loginService";
 import * as RegisterService from "../services/registerService";
+import * as AuthService from "../services/authService";
 
 export const getJoin = (req, res) => {
   return res.render("join");
@@ -36,4 +38,24 @@ export const postLogin = async (req, res, next) => {
 export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
+};
+
+export const getChangePassword = (req, res) => {
+  return res.render("change-password");
+};
+
+export const updatePassword = async (req, res, next) => {
+  const {
+    body,
+    session: {
+      user: { _id },
+    },
+  } = req;
+  try {
+    const { oldPassword, newPassword } = new updatePasswordDto(body);
+    await AuthService.changePassword(_id, oldPassword, newPassword);
+    return res.redirect("/auth/logout");
+  } catch (error) {
+    next(error);
+  }
 };
