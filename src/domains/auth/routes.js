@@ -2,13 +2,14 @@ import express from "express";
 import {
   getJoin,
   getLogin,
+  logout,
   postJoin,
   postLogin,
 } from "./controllers/authController";
 import { validateDto } from "../../middlewares/validateDto";
 import registerAuthDto from "./dtos/registerDto";
 import loginDto from "./dtos/loginDto";
-import { publicOnly } from "../../middlewares/auth";
+import { privateOnly, publicOnly } from "../../middlewares/auth";
 
 const authRouter = express.Router();
 
@@ -22,7 +23,7 @@ authRouter
   .all(publicOnly)
   .get(getLogin)
   .post(validateDto(loginDto), postLogin);
-authRouter.route("/logout").post((req, res, next) => res.send("logout 성공"));
+authRouter.route("/logout").all(privateOnly).get(logout);
 authRouter
   .route("/change-password")
   .get((req, res, next) => res.send("비밀번호 변경 페이지"))

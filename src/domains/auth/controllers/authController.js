@@ -25,11 +25,15 @@ export const postLogin = async (req, res, next) => {
   try {
     const { ...data } = new loginDto(req.body);
     const user = await LoginService.login(data);
-    console.log(user);
     req.session.loggedIn = true;
     req.session.user = user;
     return res.redirect("/products/");
   } catch (error) {
     next(error);
   }
+};
+
+export const logout = (req, res) => {
+  req.session.destroy();
+  return res.redirect("/");
 };

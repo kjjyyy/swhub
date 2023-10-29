@@ -7,3 +7,6 @@ export const getJoin = (req, res, next) => {
 export const getLogin = (req, res, next) => {
   return res.redirect("/auth/login");
 };
+export const getLogout = (req, res, next) => {
+  return res.redirect("/auth/logout");
+};
