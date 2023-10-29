@@ -6,6 +6,10 @@ export const getUserById = (userId) => {
   return User.findById(userId);
 };
 
+export const getUserByEmail = (email) => {
+  return User.findOne({ email });
+};
+
 export const createUser = async (userDetails) => {
   const data = new createUserDto(userDetails);
   const { username, email } = data;

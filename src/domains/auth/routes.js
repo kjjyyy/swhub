@@ -1,18 +1,27 @@
 import express from "express";
-import { getJoin, postJoin } from "./controllers/authController";
+import {
+  getJoin,
+  getLogin,
+  postJoin,
+  postLogin,
+} from "./controllers/authController";
 import { validateDto } from "../../middlewares/validateDto";
 import registerAuthDto from "./dtos/registerDto";
+import loginDto from "./dtos/loginDto";
+import { publicOnly } from "../../middlewares/auth";
 
 const authRouter = express.Router();
 
 authRouter
   .route("/join")
+  .all(publicOnly)
   .get(getJoin)
   .post(validateDto(registerAuthDto), postJoin);
 authRouter
   .route("/login")
-  .get((req, res, next) => res.send("login 페이지"))
-  .post((req, res, next) => res.send("login 성공"));
+  .all(publicOnly)
+  .get(getLogin)
+  .post(validateDto(loginDto), postLogin);
 authRouter.route("/logout").post((req, res, next) => res.send("logout 성공"));
 authRouter
   .route("/change-password")

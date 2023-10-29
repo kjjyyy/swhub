@@ -1,6 +1,6 @@
 import "dotenv/config";
 import "./config/dbConfig";
-import "./domains/users/models/UserModel";
+import "./domains/user/models/UserModel";
 import "./domains/auth/models/AuthModel";
 import app from "./server";
 

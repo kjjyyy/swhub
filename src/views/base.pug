@@ -9,8 +9,20 @@ html(lang="ko")
                 i.fab.fa-github
         nav 
             ul 
-                li
-                    a(href="/auth/join").header__btn 회원가입
+                li 
+                    a(href="/") Home
+                if loggedIn
+                    li 
+                        a(href="/upload") 업로드
+                    li 
+                        a(href=`/my-profile`) 나의 프로필
+                    li
+                        button 로그아웃
+                else
+                    li
+                        a(href="/join") 회원가입
+                    li
+                        a(href="/login") 로그인
         main
             if errorMessage
                 span=errorMessage

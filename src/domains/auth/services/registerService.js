@@ -1,4 +1,4 @@
-import * as UserService from "../../users/services/userService";
+import * as UserService from "../../user/services/userService";
 import * as AuthService from "../../auth/services/authService";
 
 export const register = async (data) => {
