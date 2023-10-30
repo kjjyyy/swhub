@@ -1,8 +1,10 @@
 import createProductDto from "../dtos/create-productDto";
 import * as UploadProductService from "../services/uploadService";
+import * as ProductService from "../services/productService";
 
-export const getProductList = (req, res) => {
-  return res.render("home");
+export const getProductList = async (req, res) => {
+  const products = await ProductService.findAll();
+  return res.render("home", { products });
 };
 
 export const getUpload = (req, res) => {

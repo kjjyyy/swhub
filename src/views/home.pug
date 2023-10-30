@@ -1,4 +1,9 @@
 extends base
+include mixins/product
 
 block content
-    h3 home
+    div.product-grid
+        each product in products
+            +product(product)
+        else
+            span.empty__message 상품들이 없습니다.
