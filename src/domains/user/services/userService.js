@@ -1,4 +1,4 @@
-import { ValidationError } from "../../../errors";
+import { NotFoundError, ValidationError } from "../../../errors";
 import createUserDto from "../dtos/createUserDto";
 import User from "../models/UserModel";
 
@@ -26,4 +26,13 @@ export const createUser = async (userDetails) => {
 export const existsUser = (filter, toBoolean = true, options) => {
   const query = User.exists(filter, options);
   return toBoolean ? query.then((user) => Boolean(user)) : query;
+};
+
+export const registerProduct = async (userId, productId) => {
+  const user = await getUserById(userId);
+  if (!user) {
+    throw new NotFoundError("요청한 유저를 찾을 수 없습니다.");
+  }
+  user.products.push(productId);
+  await user.save();
 };

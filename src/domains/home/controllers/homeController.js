@@ -10,3 +10,6 @@ export const getLogin = (req, res, next) => {
 export const getLogout = (req, res, next) => {
   return res.redirect("/auth/logout");
 };
+export const getUpload = (req, res, next) => {
+  return res.redirect("/products/upload");
+};

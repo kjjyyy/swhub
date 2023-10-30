@@ -22,3 +22,9 @@ export const isEmail = (target) => {
 export const isUsername = (target) => {
   return isString(target);
 };
+
+export const isPrice = (target) => {
+  if (!isNumber(target)) return false;
+  if (target < 0 || isNaN(target)) return false;
+  return true;
+};

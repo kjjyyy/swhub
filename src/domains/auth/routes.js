@@ -8,10 +8,10 @@ import {
   postLogin,
   updatePassword,
 } from "./controllers/authController";
-import { validateDto } from "../../middlewares/validateDto";
-import registerAuthDto from "./dtos/registerDto";
-import loginDto from "./dtos/loginDto";
 import { privateOnly, publicOnly } from "../../middlewares/auth";
+import { validateDto } from "../../middlewares/validateDto";
+import loginDto from "./dtos/loginDto";
+import registerAuthDto from "./dtos/registerDto";
 import updatePasswordDto from "./dtos/update-passwordDto";
 
 const authRouter = express.Router();

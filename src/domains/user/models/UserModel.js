@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   lastName: { type: String, required: true, default: "홍", trim: true },
   address: { type: String, required: true, default: "지구", trim: true },
   avatarUrl: { type: String, default: "" },
+  products: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
 });
 
 userSchema.pre("validate", function (next) {
