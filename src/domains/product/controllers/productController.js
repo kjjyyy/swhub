@@ -29,3 +29,15 @@ export const postProduct = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getWatch = async (req, res, next) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const product = await ProductService.productDetail(id);
+    return res.render("productDetail", { product });
+  } catch (error) {
+    next(error);
+  }
+};

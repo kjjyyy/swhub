@@ -3,6 +3,7 @@ import { privateOnly } from "../../middlewares/auth";
 import {
   getProductList,
   getUpload,
+  getWatch,
   postProduct,
 } from "./controllers/productController";
 import { productUpload } from "../../middlewares/uploads";
@@ -21,5 +22,6 @@ productRouter
     postProduct
   );
 productRouter.route("/upload").all(privateOnly).get(getUpload);
+productRouter.route("/:id([0-9a-f]{24})").get(getWatch);
 
 export default productRouter;

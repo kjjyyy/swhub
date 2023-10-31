@@ -1,0 +1,19 @@
+extends base
+
+block content
+    div.product__image
+        img(src="/" + product.fileUrl)
+    each line in product.designCode.split('\n')
+        p(style="white-space: pre; font-family: monospace;")= line
+    div.product__data
+        p.product__title=product.title
+        p.product__description=product.description
+        p.product__price 가격: #{product.price}
+        small.product__owner Uploaded by
+            a(href=`/users/${product.owner._id}`)=product.owner.username
+        small.product__createdAt=new Date(product.createdAt).toLocaleDateString("ko-kr", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
+        small.product__views #{product.meta.views} 회
+        if String(product.owner._id) === String(loggedInUser._id)
+            a(href=`${product.id}/edit`) Edit Product &rarr;
+            br
+            a(href=`${product.id}/delete`) Delete Product &rarr;
