@@ -1,6 +1,7 @@
 import express from "express";
 import { privateOnly } from "../../middlewares/auth";
 import {
+  getEdit,
   getProductList,
   getUpload,
   getWatch,
@@ -23,5 +24,6 @@ productRouter
   );
 productRouter.route("/upload").all(privateOnly).get(getUpload);
 productRouter.route("/:id([0-9a-f]{24})").get(getWatch);
+productRouter.route("/:id([0-9a-f]{24})/edit").all(privateOnly).get(getEdit);
 
 export default productRouter;

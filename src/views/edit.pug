@@ -1,0 +1,21 @@
+extends base
+
+block content
+    form(action="/products", method="POST", enctype="multipart/form-data")
+        div
+            label(for="productImage") 대표 이미지
+            input(type="file", id="productImage", name="productImage", accept="image/*")
+        div
+            label(for="title") 상품 제목:
+            input(type="text", id="title", name="title", required, value=product.title)
+        div
+            label(for="description") 상품 설명:
+            textarea(name="description", id="description", rows="2", required)=product.description
+        div
+            label(for="price") 가격 (USD):
+            input(type="number", id="price", name="price", step="0.01", required, value=product.price)
+        div
+            label(for="designCode") 설계 코드 에디터
+            textarea(id="designCode", placeholder="텍스트를 입력하세요", name="designCode", rows="4", cols="50")=product.designCode
+        br
+        input(type="submit" value="상품 수정")

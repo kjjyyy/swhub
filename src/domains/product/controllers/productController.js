@@ -1,6 +1,7 @@
 import createProductDto from "../dtos/create-productDto";
 import * as UploadProductService from "../services/uploadService";
 import * as ProductService from "../services/productService";
+import { ForbiddenError } from "../../../errors";
 
 export const getProductList = async (req, res) => {
   const products = await ProductService.findAll();
@@ -38,6 +39,27 @@ export const getWatch = async (req, res, next) => {
     const product = await ProductService.productDetail(id);
     return res.render("productDetail", { product });
   } catch (error) {
+    next(error);
+  }
+};
+
+export const getEdit = async (req, res, next) => {
+  const {
+    params: { id: productId },
+    session: {
+      user: { _id: userId },
+    },
+  } = req;
+  try {
+    const product = await ProductService.verifyUserAndGetProduct(
+      userId,
+      productId
+    );
+    return res.render("edit", { product });
+  } catch (error) {
+    if (error instanceof ForbiddenError) {
+      return res.redirect(403, "/");
+    }
     next(error);
   }
 };
