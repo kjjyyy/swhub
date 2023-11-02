@@ -1,3 +1,9 @@
 {
   "presets": ["@babel/preset-env"]
 }
+
+
+/*babel.config.json : Babel을 구성하기 위한 설정 파일 / JavaScript 코드를 트랜스파일레이션하고 다양한 환경에서 실행 가능한 코드로 변환하는 데 사용되는 도구
+
+Babel 프리셋(preset)을 설정 : Babel 프리셋은 특정 환경에서 어떤 기능을 사용할 것인지 미리 구성된 세트 @babel/preset-env"는 주로 사용되는 프리셋 중 하나, 현재 환경에 필요한 최신 JavaScript 기능 및 구문을 자동으로 지원.
+==> 위의 babel.config.json 파일은 프로젝트에서 ES6+ 문법을 사용하고, Babel을 사용하여 해당 코드를 호환성을 가진 이전 버전의 JavaScript로 변환하려는 것을 나타냅니다.*/
